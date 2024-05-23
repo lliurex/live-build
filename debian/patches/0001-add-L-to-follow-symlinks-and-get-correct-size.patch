@@ -1,0 +1,21 @@
+From: Raul Rodrigo Segura <raurodse@gmail.com>
+Date: Thu, 23 May 2024 13:36:13 +0200
+Subject: add -L to follow symlinks and get correct size
+
+---
+ scripts/build/binary_grub-efi | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/scripts/build/binary_grub-efi b/scripts/build/binary_grub-efi
+index d504569..51713a6 100755
+--- a/scripts/build/binary_grub-efi
++++ b/scripts/build/binary_grub-efi
+@@ -249,7 +249,7 @@ touch ${_CHROOT_DIR}/grub-efi-temp-cfg/grub.cfg -d@${SOURCE_DATE_EPOCH}
+ size=0
+ for file in ${_CHROOT_DIR}/grub-efi-temp/EFI/boot/*.efi \
+ 		${_CHROOT_DIR}/grub-efi-temp-cfg/grub.cfg; do
+-	size=\$((\$size + \$(stat -c %s "\$file")))
++	size=\$((\$size + \$(stat -L -c %s "\$file")))
+ done
+ 
+ # directories: EFI EFI/boot boot boot/grub
