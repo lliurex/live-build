@@ -1,4 +1,4 @@
-live-build (1:20240811~lliurex1) noble; urgency=medium
+live-build (1:20240811~lliurex1+symlink_path) noble; urgency=medium
 
   * Add lliurex patch 
 
